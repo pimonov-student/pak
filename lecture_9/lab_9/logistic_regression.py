@@ -1,3 +1,4 @@
+import operator
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
@@ -24,3 +25,5 @@ acc = accuracy_score(df_test_y, predict)
 
 print('Точность: ', end='')
 print(acc)
+
+# logistic_regression не имеет feature_importances_...
