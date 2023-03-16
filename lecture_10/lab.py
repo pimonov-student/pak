@@ -36,7 +36,7 @@ class Model:
     
     # Производная от сигмоиды, потребуется при обратном проходе
     def sigmoid_derivative(self, x):
-        return (x * (1 - x))
+        return (self.hidden_layer.sigmoid(x) * (1 - self.hidden_layer.sigmoid(x)))
 
     # Прямой проход
     def forward(self, input):
@@ -85,6 +85,8 @@ model = Model(input_number, hidden_number, output_number, expected_output)
 model.train(input, 10000)
 
 # Проверим
-predicted_output = model.predict([[1, 0], [1, 1]])
+predicted_output = model.predict([[1, 0], [1, 1], [0, 0], [0, 1]])
+print("Результат:", end='\n')
 print(model.predicted_output)
-print(model.accuracy(model.predicted_output, [[1], [0]]))
+print("\nТочность:", end='\n')
+print(model.accuracy(model.predicted_output, [[1], [0], [0], [1]]))
